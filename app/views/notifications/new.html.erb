@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create a new notification</h3>
+    </div>
+    <div class="panel-body">
+      <div>
+        <h3> Create an SMS notification </h3>
+        <%= form_tag '/notifications', :method => "post" do %>
+          <label for="number-for-notification">Phone number:</label>
+          <div class="input-group">
+            <input type="text" name="phone_number" class="form-control" id="number-for-notification" >
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="carrier">Carrier</label>
+            <div>
+              <select name="carrier" id="carrier" class="form-control">
+                <option value="verizon">Verizon</option>
+                <option value="att">AT&T</option>
+                <option value="tmobile">T-Mobile</option>
+                <option value="sprintpcs">Sprint PCS</option>
+                <option value="virginmobile">Virgin Mobile</option>
+                <option value="alltel">Alltel</option>
+                <option value="cingular">Cingular</option>
+                <option value="nextel">Nextel</option>
+                <option value="unicel">Unicel</option>
+                <option value="uscellular">US Cellular</option>
+              </select>
+            </div>
+          </div>
+          <label for="message-for-notification">(Optional) The body of the message to be sent. If unspecified, it will be the `message` parameter in the POST request made to the notifications URL.</label>
+          <div class="input-group">
+            <input type="text" name="default_message" class="form-control" id="message-for-notification" >
+          </div>
+          <%= submit_tag "Submit", :class => "btn btn-default" %>
+        <% end %>
+      </div>
+      <div>
+        <h3> Create an email notification </h3>
+        <%= form_tag '/notifications', :method => "post" do %>
+        <label for="email-for-notification">Email address:</label>
+        <div class="input-group">
+          <input type="text" name="email" class="form-control" id="email-for-notification" >
+        </div>
+        <label for="message-for-notification">(Optional) The body of the message to be sent. If unspecified, it will be the `message` parameter in the POST request made to the notifications URL.</label>
+        <div class="input-group">
+          <input type="text" name="default_message" class="form-control" id="message-for-notification" >
+        </div>
+          <%= submit_tag "Submit", :class => "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

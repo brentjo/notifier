@@ -14,7 +14,7 @@ curl https://notifierapi.herokuapp.com/c010b0a188a9eec3bc50d84140017290 \
 
 ## Why
 
-Whenever I write one-off scripts and tools, I'll usually want a way for them to send me updates, perferably to my phone via SMS. The easiest way I've found to do this is through email, since many carriers have addresses that forward email to SMS. (E.g Verizon's `your_number@vtext.com`). Instead of re-implementing that email sending logic in every programming language I write a script in, I wrote this app that houses that logic and is invoked via a POST request, since most languages have a standard and simple way to make an HTTP POST request.
+Whenever I write one-off scripts and tools, I'll usually want a way for them to send me updates, preferably to my phone via SMS. The easiest way I've found to do this is through email, since many carriers have addresses that forward email to SMS. (E.g Verizon's `your_number@vtext.com`). Instead of re-implementing that email sending logic in every programming language I write a script in, I wrote this app that houses that logic and is invoked via a POST request, since most languages have a standard and simple way to make an HTTP POST request.
 
 I'd recommend deploying this yourself if you wanted to use it for real use cases, but you can check it out live at https://notifierapi.herokuapp.com. Feel free to use junk credentials.
 

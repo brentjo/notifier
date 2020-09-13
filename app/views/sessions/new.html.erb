@@ -1,0 +1,8 @@
+<div class="form">
+  <%= form_tag '/login', :method => "post", class: "form-signin" do %>
+    <h2 class="form-signin-heading">Login</h2>
+    <input type="text" name="email" class="form-control" placeholder="Email address" required autofocus/>
+    <input type="password" name="password" class="form-control" placeholder="Password">
+    <%= submit_tag "Submit", :class => "btn btn-lg btn-primary btn-block" %>
+  <% end %>
+</div>

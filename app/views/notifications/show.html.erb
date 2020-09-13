@@ -1,0 +1,36 @@
+
+<div class="container">
+  <h5>You have <%= pluralize(current_user.notifications.count, 'notification') %> configured.</h5>
+  <table class="table">
+    <thead>
+        <tr>
+          <th>URL</th>
+          <th>Email</th>
+          <th>Last sent</th>
+          <th>Total sent</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% current_user.notifications.each do |notification| %>
+        <tr>
+          <td><%= token_url_for(notification.token) %></td>
+          <td><%= notification.email %></td>
+          <td><%= notification.last_sent %></td>
+          <td><%= notification.total_sent %></td>
+          <td>
+            <%= form_tag '/notifications', :method => "delete" do %>
+              <%= hidden_field_tag :notification_id, notification.id %>
+              <%= submit_tag "Delete", :class => "btn btn-danger" %>
+            <% end %>
+          </td>
+          <td>
+            <%= form_tag '/notifications/test', :method => "post" do %>
+              <%= hidden_field_tag :notification_id, notification.id %>
+              <%= submit_tag "Send Test Notification", :class => "btn btn-info" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

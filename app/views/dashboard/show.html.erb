@@ -1,0 +1,7 @@
+<div class="container">
+  <% if logged_in? %>
+    <p><a href="/notifications/new">Create a new notification</a> or <a href="/notifications">manage your existing ones</a>
+  <% else %>
+    <p><a href="/login">Login</a> or <a href="/register">register</a> to create new notifications.<p>
+  <% end %>
+</div>

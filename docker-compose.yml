@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+  delayed_job:
+    build: .
+    volumes:
+      - .:/notifier
+    command: bundle exec rake jobs:work
+    environment:
+      DATABASE_URL: postgres://postgres@db
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - db
+    tty: true
+  web:
+    build: .
+    volumes:
+      - .:/notifier
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgres://postgres@db
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - db
+      - redis
+      - delayed_job
